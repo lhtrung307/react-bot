@@ -1,10 +1,14 @@
 import discord
 from discord.ext import commands
 from threading import Timer
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
-TOKEN = 'NjkxMTg0NjAyNjg0OTgxMjg4.Xngo8g.7naxpfE2kh7msTfeR_3nF3B_Ruc'
-BOT_PREFIX = "!"
+TOKEN = os.getenv("DISCORD_TOKEN")
+BOT_PREFIX = os.getenv("BOT_PREFIX")
 
 ReactVNId = 681434475036672030
 ROLE_MEMBER = "@member"
