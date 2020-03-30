@@ -22,13 +22,13 @@ bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 @bot.command(name="kick")
 async def _kick(ctx):
+    await ctx.send("hello")
     if ctx.guild.id == ReactVNId:
+        print(len(ctx.guild.members))
         for member in ctx.guild.members:
             if member.bot:
                 return
             print(member)
-
-    await ctx.send("hello")
 
 
 @bot.event
@@ -57,7 +57,7 @@ async def on_message(message):
         return
 
     talkedRecently.add(message.author.id)
-    print(talkedRecently)
+
     removeTalk = Timer(2.5, talkedRecently.discard, [message.author.id])
     removeTalk.start()
     await bot.process_commands(message)
