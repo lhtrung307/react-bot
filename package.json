@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node discord.js",
+    "start": "pip3 install -U -r .requirements.txt -t .data/site-packages && env PYTHONPATH=$PWD/.data/site-packages python3 react-bot.py",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon discord.js"
   },

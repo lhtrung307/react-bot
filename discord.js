@@ -12,13 +12,14 @@ const createdVoiceRooms = new Set();
 const Discord = require("discord.js");
 const client = new Discord.Client();
 let guild = null;
+
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   guild = client.guilds.cache.get(ReactVNId);
 
-  // guild.members.cache.
   // client.emit("guildMemberAdd", guild.members.cache.get("459326883327115271"));
+  // client.emit("message", "!kick");
 });
 
 client.on("message", async message => {
@@ -28,6 +29,28 @@ client.on("message", async message => {
 
   if (message.content === "!test") {
     message.channel.send("You send test bot message");
+  }
+
+  if (message.content === "!kick") {
+    client.guilds.cache.get(ReactVNId).members.cache.map(member => {
+      client.guilds.cache
+        .get(ReactVNId)
+        .members.fetch(member.id)
+        .then(member =>
+          console.log("member.lastMessageChannelID", member.user)
+        );
+      if (!member.user.bot) {
+        console.log("member.displayName", member.displayName);
+        if (member.lastMessage) {
+          console.log(
+            "member.lastMessage.createdAt",
+            member.lastMessage.createdAt
+          );
+        } else {
+          console.log("member.joinedAt", member.joinedAt);
+        }
+      }
+    });
   }
 
   if (talkedRecently.has(message.author.id)) {
