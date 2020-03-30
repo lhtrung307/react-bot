@@ -6,7 +6,6 @@ import os
 
 load_dotenv()
 
-
 TOKEN = os.getenv("DISCORD_TOKEN")
 BOT_PREFIX = os.getenv("BOT_PREFIX")
 
